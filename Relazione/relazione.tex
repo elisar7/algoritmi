@@ -1,0 +1,103 @@
+\documentclass[10pt, oneside]{article}
+
+%Typography and language
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{enumitem}
+\usepackage{eurosym}
+
+%Layout
+\usepackage[top=1in, bottom=1.25in, left=1.25in, right=1.25in]{geometry}
+
+%Graphics
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={blue}, 
+    urlcolor={blue}
+}
+
+%Math
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+%Code
+\usepackage{listings}
+\lstset{ 
+  backgroundcolor=\color{white}, 
+  breaklines=true,                 
+  captionpos=b,                   
+  commentstyle=\color{green},    
+  extendedchars=true,  
+  mathescape = true,
+  frame=single,	                   
+  keepspaces=true,                 
+  keywordstyle=\color{blue},      
+  language=Java,                 
+  morekeywords={*,...},          
+  numbers=left,                    
+  numbersep=5pt,                   
+  numberstyle=\tiny\color{black}, 
+  rulecolor=\color{black},        
+  showspaces=false,                
+  showstringspaces=false,          
+  stepnumber=2,                   
+  stringstyle=\color{mauve},     
+  tabsize=2,	                   
+  title=\lstname                   
+}
+
+\title{Progetto di Algoritmi\\
+A.A. 2016-2017}
+\author{Mattia Nocerino 818089\\
+Angelo Savarino 814991\\
+Elisa Solinas 811737}
+\date{Updated on \today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Esercizio 1: Algoritmi di ordinamento}
+Gli algoritmi di ordinamento \texttt{SelectionSort} e \texttt{InsertionSort} hanno complessità quadratica, per cui i risultati ottenuti sul file \texttt{records.csv}(composto da 20.000.000 di record) non sono stati soddisfacenti (nessuna delle nostre macchine è riuscita a completare l'ordinamento in meno di 10 minuti).\\\\
+Attraverso l'algoritmo \texttt{QuickSort}, con scelta random del \texttt{pivot}, i risultati ottenuti sono stati i seguenti:
+    \begin{itemize}
+        \item{Ordinamento sul primo campo: 65390 ms}
+        \item{Ordinamento sul secondo campo: 25794 ms}
+        \item{Ordinamento sul terzo campo: 38633ms}
+    \end{itemize}
+La complessità del \texttt{QuickSort} nel caso peggiore è $n^2$, mentre è $n \log n$ nel caso medio. È importante notare, però, che è molto poco probabile che si verifichi il caso peggiore, in particolare sfruttando la \textbf{randomizzazione}, cioè scegliendo il pivot in maniera casuale.
+
+\section{Esercizio 2: Albero $n$-ario}
+L'albero $n$-ario è stato implementato attraverso la classe \texttt{Tree}, che ha come attributo un elemento \texttt{root}, di tipo \texttt{Node}.\\
+Il tipo \texttt{Node} contiene l'etichetta del nodo (il suo valore), un puntatore al padre e un puntatore al fratello destro. Contiene, inoltre, il grado (\texttt{grade}) del nodo, ossia il numero di figli del nodo.\\\\
+Il metodo \texttt{getBinaryTree()}, che ci permette di costruire un albero binario a partire dall'albero $n$-ario, trasforma l'albero in una lista, la ordina utilizzando l'algoritmo \texttt{quickSort} implementato nell'esercizio precedente, in modo da inserire i nodi nell'ordine corretto, utilizzando il metodo \texttt{binaryAdder()}.
+
+\section{Esercizio 3: Verifica MaxHeap}
+La classe \texttt{MaxHeap} è una classe statica, che contiene due metodi equivalenti, uno iterativo e uno ricorsivo, per verificare se l'array passato come parametro rappresenta o meno un \texttt{MaxHeap}.
+
+\section{Esercizio 4: Struttura UnionFind}
+La struttura \texttt{UnionFind} è stata implementata attraverso una struttura \texttt{HashMap}, avente come \textbf{chiavi} gli elementi dell'insieme e come \textbf{valori} strutture \texttt{UFNode}, contenenti il rango della chiave e il rappresentante dell'insieme cui la chiave appartiene.\\
+
+\section{Esercizio 5: Grafo}
+\subsection{Implementazione della struttura grafo diretto}
+Per la rappresentazione di un grafo diretto utilizziamo la lista di adiacenza, implementata attraverso una \texttt{HashMap}, in cui le chiavi rappresentano i vertici del grafo, mentre i valori rappresentano attraverso  dei nodi gli archi connessi a ciascun vertice-chiave.
+
+\subsection{Implementazione della struttura grafo non diretto}
+I grafi non diretti vengono rappresentati attraverso la classe \texttt{UndirectedGraph}, che è una sottoclasse di \texttt{DirectedGraph}, descritto nel paragrafo precedente.\\
+I metodi implementati nella classe \texttt{UndirectedGraph} sostituiscono i metodi della classe  \texttt{DirectedGraph} sono i seguenti:
+    \begin{itemize}
+        \item{Il metodo \texttt{addEdge}, che per ogni arco $u \rightarrow v$, aggiunge sia $(u,v)$ che $(v, u)$, in modo da rappresentare un grafo non orientato.}
+        \item{Il metodo \texttt{weight()}, che divide a metà il peso del grafo, in quanto ciascun arco non orientato viene rappresentato mediante un doppio arco.}
+    \end{itemize}
+
+\subsection{Implementazione dell’algoritmo di Kruskal}
+Il costruttore della classe \texttt{MSTKruskal} prende in input un grafo non diretto $G$ e produce una lista degli archi che compongono l'albero minimo di copertura di $G$.\\
+L'algoritmo è stato implementato utilizzando una \texttt{UnionFind}, in cui ciascun insieme rappresenta una componente connessa del grafo.\\
+Inoltre, l'algoritmo sfrutta il metodo \texttt{getEdges()} della classe \texttt{DirectedGraph}, che restituisce un \texttt{ArrayList} ordinato contenente tutti gli archi di $G$.
+
+\end{document}

@@ -1,0 +1,10 @@
+\select@language {italian}
+\select@language {italian}
+\contentsline {section}{\numberline {1}Esercizio 1: Algoritmi di ordinamento}{1}{section.1}
+\contentsline {section}{\numberline {2}Esercizio 2: Albero $n$-ario}{1}{section.2}
+\contentsline {section}{\numberline {3}Esercizio 3: Verifica MaxHeap}{2}{section.3}
+\contentsline {section}{\numberline {4}Esercizio 4: Struttura UnionFind}{2}{section.4}
+\contentsline {section}{\numberline {5}Esercizio 5: Grafo}{2}{section.5}
+\contentsline {subsection}{\numberline {5.1}Implementazione della struttura grafo diretto}{2}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Implementazione della struttura grafo non diretto}{2}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Implementazione dell\IeC {\textquoteright }algoritmo di Kruskal}{2}{subsection.5.3}
